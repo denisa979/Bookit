@@ -24,7 +24,7 @@ public class SignInPage {
 	@FindBy(xpath = "//button[.='sign in']")
 	public WebElement signInButton;
 
-
+	//Roles : teacher , team-member , team-leader
 	public void login(String role) {
 		String email = "";
 		String password = "";

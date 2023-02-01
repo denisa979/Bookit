@@ -24,7 +24,7 @@ public class BookitUtils {
         return token;
     }
 
-
+    //teacher , team-leader , team-member
     public static String generateTokenByRole(String role) {
 
         //returnCredentials(role);
@@ -32,7 +32,9 @@ public class BookitUtils {
 
         String token = given()
                 .queryParams(returnCredentials(role))
-                .when().get(ConfigurationReader.getProperty("base_url") + "/sign").prettyPeek().path("accessToken");
+                .when().get(ConfigurationReader.getProperty("base_url") + "/sign").prettyPeek()
+                .then().statusCode(200).extract().response().path("accessToken");
+
 
         return "Bearer " + token;
 
