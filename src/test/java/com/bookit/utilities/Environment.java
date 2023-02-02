@@ -21,9 +21,9 @@ public class Environment {
 
     static{
         Properties properties = null;
-        //String environment = System.getProperty("environment") != null ? environment = System.getProperty("environment") : ConfigurationReader.getProperty("environment");
+        String environment = System.getProperty("environment") != null ? environment = System.getProperty("environment") : ConfigurationReader.getProperty("environment");
         //this field will get its value from configuration.properties file environment key /qa1 qa2 qa3
-        String environment = ConfigurationReader.getProperty("environment");
+        //String environment = ConfigurationReader.getProperty("environment");
 
 
 

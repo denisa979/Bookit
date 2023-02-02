@@ -32,7 +32,7 @@ public class BookitUtils {
 
         String token = given()
                 .queryParams(returnCredentials(role))
-                .when().get(Environment.URL + "/sign")
+                .when().get(Environment.BASE_URL + "/sign")
                 .then().statusCode(200).extract().response().path("accessToken");
 
 
