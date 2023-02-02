@@ -4,6 +4,7 @@ import com.bookit.pages.SelfPage;
 import com.bookit.utilities.BookitUtils;
 import com.bookit.utilities.ConfigurationReader;
 import com.bookit.utilities.DB_Util;
+import com.bookit.utilities.Environment;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -38,7 +39,7 @@ public class ApiStepDefs {
     public void i_sent_get_request_to_endpoint(String endpoint) {
          response = given().accept(ContentType.JSON)
                 .header("Authorization", token)
-                .when().get(ConfigurationReader.getProperty("base_url") + endpoint);
+                .when().get(Environment.BASE_URL + endpoint);
     }
     @Then("status code should be {int}")
     public void status_code_should_be(int expectedStatusCode) {
