@@ -159,4 +159,32 @@ public class ApiStepDefs {
         Assert.assertEquals(expectedNameFromAPI,actualFullNameUI);
         Assert.assertEquals(actualRole,actualRoleUI);
     }
+
+    //ADDING A NEW STUDENT AND DELETING IT
+
+    @When("I send POST request {string} endpoint with following information")
+    public void i_send_post_request_endpoint_with_following_information(String endpoint, Map<String,String> studentInfo) {
+        response=given().accept(ContentType.JSON)
+                        .header("Authorization",token)
+                        .queryParams(studentInfo)
+                .when().post(Environment.BASE_URL +endpoint).prettyPeek();
+
+    }
+    @Then("I delete previously added student")
+    public void i_delete_previously_added_student() {
+        //we need to get the entryiId from the post request and send delete request to it.
+        int idToDelete = response.path("entryiId");
+        System.out.println("idToDelete = " + idToDelete);
+
+        //Send DELETE request to idToDelete path parameter
+        given()
+                .header("Authorization",token)
+                .pathParam("id",idToDelete)
+        .when()
+                .delete(Environment.BASE_URL+"/api/students/{id}")
+                .then().statusCode(204);
+
+    }
+
+
 }
