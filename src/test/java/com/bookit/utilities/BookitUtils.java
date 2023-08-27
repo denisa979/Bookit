@@ -17,7 +17,7 @@ public class BookitUtils {
                 .queryParam("email", email)
                 .and()
                 .queryParam("password", password)
-                .when().get(Environment.URL + "/sign");
+                .when().get(Environment.BASE_URL + "/sign");
 
         String token = "Bearer " + response.path("accessToken");
 
