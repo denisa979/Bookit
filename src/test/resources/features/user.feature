@@ -1,3 +1,4 @@
+@wip
 Feature: User Verification
 
 
@@ -23,7 +24,7 @@ Feature: User Verification
     When I sent get request to "/api/users/me" endpoint
     Then UI,API and Database user information must be match
 
-  @wip @db @ui
+   @db @ui
   Scenario Outline: three point/layer (UI,API,DATABASE) <role>
     Given user logs in using "<role>" credentials
     And user is on the my self page
